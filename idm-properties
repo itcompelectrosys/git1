@@ -1,0 +1,17 @@
+# EPEL installation
+dnf clean all
+dnf -y install epel-release
+dnf -y update
+ 
+# other recommended packages installation
+dnf -y install mc haveged nmap screen sysstat telnet net-tools nano wget vim-enhanced bzip2 bash-completion lsof zip unzip psmisc policycoreutils-python-utils tar
+ 
+# enable haveged after OS start
+systemctl start haveged.service
+systemctl enable haveged.service
+ 
+# set the hostname
+hostnamectl set-hostname FQDN_server_name
+hostnamectl status
+# check the network configuration, be sure it is static (/etc/sysconfig/network-scripts/)
+# reboot the server
